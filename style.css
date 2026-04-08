@@ -1,0 +1,353 @@
+/* --- ANIMATIONS KEYFRAMES --- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes waveMove {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- BARRE DE PROGRESSION --- */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--vert-bo-fonce), var(--vert-bo));
+    z-index: 9999;
+    width: 0%;
+    transition: width 0.1s linear;
+    pointer-events: none;
+}
+
+/* --- VAGUES DE TRANSITION --- */
+.wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 2;
+}
+
+.wave-divider svg {
+    display: block;
+    width: 200%;
+    height: 70px;
+    animation: waveMove 5s linear infinite;
+}
+
+/* Scroll reveal — état initial (invisible) */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Délais pour les éléments en cascade */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+/* --- CONFIGURATION DE BASE --- */
+:root {
+    --vert-bo: #4fb59b;
+    --vert-bo-fonce: #3d927d;
+    --gris-bo: #2d3134;
+    --blanc: #ffffff;
+    --gris-clair: #f4f6f7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--gris-bo);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center { text-align: center; }
+.bg-light { background-color: var(--gris-clair); }
+.bg-green { background-color: var(--vert-bo); color: var(--blanc); }
+.bg-dark { background-color: var(--gris-bo); color: var(--blanc); }
+
+/* --- NAVIGATION --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: var(--blanc);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    animation: fadeInDown 0.6s ease both;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gris-bo);
+}
+
+.logo span:not(.logo-icon) { font-weight: 300; }
+.logo-icon { color: var(--vert-bo); font-size: 1.2rem; }
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--gris-bo);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--vert-bo); }
+
+/* --- HERO SECTION (Accueil) - MISE À JOUR CLEF --- */
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: var(--blanc);
+    position: relative;
+    background-color: transparent;
+    background-image: url('motif-bo.png');
+    background-repeat: repeat;
+    background-position: center top;
+    background-size: auto;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    /* On force la couleur blanche au cas où */
+    color: var(--blanc);
+}
+
+.hero h1 span { color: var(--vert-bo); }
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    color: var(--blanc); /* Couleur blanche pour le paragraphe */
+}
+
+.btn-primary {
+    background-color: var(--vert-bo);
+    color: var(--blanc);
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover { background-color: var(--vert-bo-fonce); }
+
+/* --- SECTIONS DÉTAILS --- */
+.section-detail {
+    padding: 80px 0 100px;
+    position: relative;
+}
+
+.section-detail h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+/* Soulignement animé sur les titres */
+.section-detail h2::after {
+    content: '';
+    display: block;
+    height: 4px;
+    background: currentColor;
+    border-radius: 2px;
+    margin: 14px auto 24px;
+    width: 0;
+    transition: width 0.8s ease 0.3s;
+}
+
+.section-detail h2.visible::after {
+    width: 80px;
+}
+
+.bg-light h2 { color: var(--vert-bo); }
+.bg-green h2 { color: var(--blanc); }
+.plus { font-weight: 900; }
+
+.intro-text {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sub-text {
+    font-size: 1rem;
+    margin-bottom: 50px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+/* Grille des caractéristiques (Les petits V) */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    text-align: left;
+    margin-bottom: 50px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature-item {
+    padding: 15px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.bg-light .feature-item {
+    background: var(--blanc);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* Galeries d'images */
+.image-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.img-box {
+    width: 300px;
+    height: 250px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.img-box:hover {
+    transform: scale(1.08) rotate(3deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.img-box:hover img {
+    transform: scale(1.1);
+}
+
+/* --- BANNIÈRE PANORAMIQUE --- */
+.panoramic-banner {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.panoramic-img {
+    height: 100%;
+    width: 160%;
+    object-fit: cover;
+    display: block;
+    will-change: transform;
+    transform: translateX(0vw);
+}
+
+/* --- PIED DE PAGE --- */
+footer { padding: 60px 20px 20px 20px; }
+
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-logo h3 {
+    font-size: 2rem;
+    color: var(--vert-bo);
+}
+
+.footer-contact p { margin-bottom: 10px; }
+
+.website-link {
+    color: var(--vert-bo);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: block;
+    margin: 10px 0;
+}
+
+.social-icons span {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.social-icons span:hover { color: var(--vert-bo); }
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
