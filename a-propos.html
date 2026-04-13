@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos | BO Mobilier Merch</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <nav>
+        <div class="logo">
+            <span class="logo-icon">⬢</span> BO <span>mobilier merch</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html" style="color:var(--vert-bo)">Qui sommes-nous ?</a></li>
+            <li><a href="expertise.html">Notre Expertise</a></li>
+            <li><a href="contact.html" >Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="section-detail" style="margin-top:100px">
+        <div class="container">
+            <h1 class="reveal">À propos de <span>BO.mobilier</span></h1>
+            <div class="split-content reveal">
+                <div class="text-side">
+                    <p class="highlight-text">Spécialiste des officines</p>
+                    <p>Chez BO.mobilier on vous accompagne pour <strong>optimiser vos linéaires</strong>, votre front et back office ainsi que votre <strong>sell out</strong> !</p>
+                    <p>La créatrice de l'entreprise est <strong>diplômée de pharmacie</strong>. Ce qui lui apporte donc une connaissance de l’environnement, des besoins de l’officine et de la patientèle.</p>
+                    
+                    <div class="experience-box">
+                        <h3>Notre parcours d'experte :</h3>
+                        <ul>
+                            <li>Animatrice réseau PlusPharmacie</li>
+                            <li>Formatrice GIPHAR</li>
+                            <li>Commerciale laboratoires</li>
+                            <li>Merchandiser Leadersante</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="image-side">
+                    <img src="nv3.avif" alt="Expertise Pharmacie" style="width:100%; border-radius:20px; box-shadow: 20px 20px 0px var(--vert-bo);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-dark">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h3><span class="logo-icon">⬢</span> BO</h3>
+                <p>agencement + merchandising</p>
+            </div>
+            <div class="footer-contact">
+                <p>📍 15, avenue Albert Camus<br>77400 LAGNY-SUR-MARNE</p>
+                <p>📞 Tél : 06.80.33.76.90</p>
+                <p>✉️ bo.mobilier@gmail.com</p>
+            </div>
+            <div class="footer-social">
+                <a href="contact.html" class="btn-primary" style="font-size: 0.9rem; padding: 10px 20px;">Nous contacter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BO Mobilier Merch. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

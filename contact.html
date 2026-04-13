@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | BO Mobilier Merch</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <nav>
+        <div class="logo">
+            <span class="logo-icon">⬢</span> BO <span>mobilier merch</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html">Qui sommes-nous ?</a></li>
+            <li><a href="expertise.html">Notre Expertise</a></li>
+            <li><a href="contact.html" style="color:var(--vert-bo)">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="section-detail" style="margin-top:100px">
+        <div class="container">
+            <div class="contact-wrapper reveal">
+                <div class="contact-header">
+                    <h2>Quel est votre <span>projet ?</span></h2>
+                    <p>Audit gratuit et devis sur mesure pour votre officine.</p>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Prénom</label>
+                            <input type="text" name="prénom" placeholder="Votre prénom">
+                        </div>
+                        <div class="form-group">
+                            <label>Nom de famille</label>
+                            <input type="text" name="nom" required placeholder="Votre nom">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input type="email" name="email" required placeholder="exemple@mail.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone</label>
+                            <input type="tel" name="phone" required placeholder="06 00 00 00 00">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Adresse de l'officine</label>
+                        <input type="text" name="adresse" placeholder="Ville ou adresse complète">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" required placeholder="Décrivez votre projet d'agencement ou merchandising..." rows="5"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer; font-size: 1.1rem;">Envoyer mon projet</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <footer id="contact" class="bg-dark">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h3><span class="logo-icon">⬢</span> BO</h3>
+                <p>agencement + merchandising</p>
+            </div>
+            <div class="footer-contact">
+                <p>📍 15, avenue Albert Camus<br>77400 LAGNY-SUR-MARNE</p>
+                <p>📞 Tél : 06.80.33.76.90</p>
+                <p>✉️ bo.mobilier@gmail.com</p>
+            </div>
+            <div class="footer-social">
+                <a href="contact.html" class="btn-primary" style="font-size: 0.9rem; padding: 10px 20px;">Nous contacter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BO Mobilier Merch. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
