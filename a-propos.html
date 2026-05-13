@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos | BO Mobilier Merch</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* --- ANIMATIONS SPÉCIFIQUES À PROPOS --- */
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* --- HERO SECTION APROPOS --- */
+        .hero-section-apropos {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(21, 82, 67, 0.08) 0%, rgba(61, 142, 122, 0.05) 100%);
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero-section-apropos h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--gris-bo);
+            font-weight: 900;
+        }
+
+        .hero-section-apropos .intro-text {
+            font-size: 1.3rem;
+            color: white;
+            font-weight: 600;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-accent {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--vert-bo), var(--vert-bo-fonce));
+            margin: 0 auto;
+            border-radius: 2px;
+            animation: scaleIn 0.8s ease 0.3s both;
+        }
+
+        /* --- SPLIT CONTENT --- */
+        .split-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .split-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .text-side {
+            animation: slideInLeft 0.8s ease;
+        }
+
+        .image-side {
+            animation: slideInRight 0.8s ease;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease both;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s ease both;
+            animation-delay: 0.2s;
+        }
+
+        .text-side h2 {
+            font-size: 2.2rem;
+            color: var(--vert-bo);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .text-side h3 {
+            font-size: 1.1rem;
+            color: var(--gris-bo);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .text-side p {
+            font-size: 1rem;
+            color: var(--gris-bo);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .highlight-text {
+            color: var(--vert-bo);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* --- IMAGE CONTAINER --- */
+        .img-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(79, 181, 155, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .img-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(79, 181, 155, 0.3);
+        }
+
+        .img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .img-container:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- EXPERIENCE GRID --- */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .exp-card {
+            background: linear-gradient(135deg, rgba(79, 181, 155, 0.05) 0%, rgba(61, 142, 122, 0.02) 100%);
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exp-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(79, 181, 155, 0.1) 0%, rgba(61, 142, 122, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--vert-bo);
+            box-shadow: 0 15px 40px rgba(79, 181, 155, 0.2);
+        }
+
+        .exp-card:hover::before {
+            opacity: 1;
+        }
+
+        .exp-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .icon-svg {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(79, 181, 155, 0.2));
+            transition: all 0.3s ease;
+        }
+
+        .exp-card:hover .icon-svg {
+            filter: drop-shadow(0 4px 8px rgba(79, 181, 155, 0.4));
+            transform: scale(1.15);
+        }
+
+        .exp-card:nth-child(2) .exp-icon { animation-delay: 0.5s; }
+        .exp-card:nth-child(3) .exp-icon { animation-delay: 1s; }
+        .exp-card:nth-child(4) .exp-icon { animation-delay: 1.5s; }
+
+        .exp-card h3 {
+            font-size: 1.3rem;
+            color: var(--gris-bo);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .exp-card p {
+            color: var(--vert-bo);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* --- SECTION BG-WHITE --- */
+        .bg-white {
+            background-color: var(--blanc);
+            padding: 80px 0;
+        }
+
+        .bg-white h2 {
+            font-size: 2.5rem;
+            color: var(--vert-bo);
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 900;
+        }
+
+        /* --- ANIMATIONS DE DÉFILEMENT --- */
+        .fade-in-down {
+            animation: fadeInDown 0.8s ease both;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease both;
+        }
+    </style>
+</head>
+<body class="bg-lightAPROPOS">
+    <nav>
+        <div class="logo">
+            <span class="logo-icon">⬢</span> BO <span>mobilier merch</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html" style="color:var(--vert-bo)">Qui sommes-nous ?</a></li>
+            <li><a href="expertise.html">Notre Expertise</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section-apropos">
+        <div class="container">
+            <h1 class="reveal fade-in-down">À propos de <span style="color: white;">BO.mobilier</span></h1>
+            <p class="intro-text reveal fade-in-up" style="animation-delay: 0.2s;">Votre expert en agencement et merchandising pour pharmacies</p>
+            <div class="hero-accent"></div>
+        </div>
+    </section>
+
+    <!-- SECTION PRÉSENTATION PRINCIPALE -->
+    <section class="section-detail bg-light">
+        <div class="container">
+            <div class="split-content">
+                <div class="text-side reveal slide-in-left">
+                    <h2>Notre Mission</h2>
+                    <p class="highlight-text">Spécialiste des officines</p>
+                    <p>Chez <strong>BO.mobilier</strong>, on vous accompagne pour <strong>optimiser vos linéaires</strong>, votre front et back office ainsi que votre <strong>sell out</strong> !</p>
+                    
+                    <p>La créatrice de l'entreprise est <strong>diplômée de pharmacie</strong>. Ce qui lui apporte une connaissance approfondie de l'environnement, des besoins spécifiques de l'officine et de la patientèle.</p>
+                    
+                    <p>Grâce à son expertise combinée en gestion de pharmacie et merchandising, elle saura adapter ses solutions à vos enjeux réels pour améliorer votre expérience client et vos ventes.</p>
+                </div>
+                <div class="image-side reveal slide-in-right">
+                    <div class="img-container">
+                        <img src="nv3.avif" alt="Expertise Pharmacie">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION EXPÉRIENCE -->
+    <section class="section-detail bg-custom-geometry">
+        <div class="container">
+            <h2 class="reveal">Notre Parcours d'Experte</h2>
+            <div class="experience-grid">
+                <div class="exp-card reveal reveal-delay-1">
+                    <div class="exp-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="icon-svg">
+                            <rect x="20" y="30" width="60" height="40" fill="none" stroke="var(--vert-bo)" stroke-width="2" rx="5"/>
+                            <circle cx="35" cy="25" r="4" fill="var(--vert-bo)"/>
+                            <circle cx="65" cy="25" r="4" fill="var(--vert-bo)"/>
+                            <path d="M 40 50 Q 50 60 60 50" fill="none" stroke="var(--vert-bo)" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="50" y1="35" x2="50" y2="65" stroke="var(--vert-bo)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Animatrice Réseau</h3>
+                    <p>PlusPharmacie</p>
+                </div>
+                <div class="exp-card reveal reveal-delay-2">
+                    <div class="exp-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="icon-svg">
+                            <rect x="25" y="20" width="50" height="60" fill="none" stroke="var(--vert-bo)" stroke-width="2" rx="3"/>
+                            <line x1="35" y1="30" x2="65" y2="30" stroke="var(--vert-bo)" stroke-width="2"/>
+                            <line x1="35" y1="40" x2="65" y2="40" stroke="var(--vert-bo)" stroke-width="2"/>
+                            <line x1="35" y1="50" x2="65" y2="50" stroke="var(--vert-bo)" stroke-width="2"/>
+                            <line x1="35" y1="60" x2="65" y2="60" stroke="var(--vert-bo)" stroke-width="2"/>
+                            <line x1="35" y1="70" x2="55" y2="70" stroke="var(--vert-bo)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Formatrice</h3>
+                    <p>GIPHAR</p>
+                </div>
+                <div class="exp-card reveal reveal-delay-3">
+                    <div class="exp-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="icon-svg">
+                            <rect x="20" y="25" width="60" height="50" fill="none" stroke="var(--vert-bo)" stroke-width="2" rx="4"/>
+                            <rect x="30" y="35" width="15" height="20" fill="var(--vert-bo)"/>
+                            <rect x="55" y="45" width="15" height="10" fill="var(--vert-bo)"/>
+                            <line x1="45" y1="35" x2="45" y2="55" stroke="var(--vert-bo)" stroke-width="1.5"/>
+                            <circle cx="50" cy="62" r="3" fill="var(--vert-bo)"/>
+                        </svg>
+                    </div>
+                    <h3>Commerciale</h3>
+                    <p>Laboratoires</p>
+                </div>
+                <div class="exp-card reveal reveal-delay-4">
+                    <div class="exp-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="icon-svg">
+                            <rect x="20" y="60" width="20" height="20" fill="none" stroke="var(--vert-bo)" stroke-width="2"/>
+                            <rect x="50" y="40" width="20" height="40" fill="none" stroke="var(--vert-bo)" stroke-width="2"/>
+                            <rect x="80" y="20" width="0" height="60" fill="none" stroke="var(--vert-bo)" stroke-width="2"/>
+                            <circle cx="30" cy="70" r="2" fill="var(--vert-bo)"/>
+                            <circle cx="60" cy="50" r="2" fill="var(--vert-bo)"/>
+                        </svg>
+                    </div>
+                    <h3>Merchandiser</h3>
+                    <p>Leadersante</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION VALEURS -->
+    <section class="section-detail bg-lightAPROPOS">
+        <div class="container">
+            <h2 class="reveal" style="text-align: center; margin-bottom: 60px; color: var(--blanc);">Nos Valeurs</h2>
+            <div class="split-content">
+                <div class="text-side reveal slide-in-left">
+                    <h3>Expertise & Passion</h3>
+                    <p>Notre engagement envers l'excellence dans chaque projet de merchandising et d'agencement.</p>
+                    
+                    <h3>Compréhension du Terrain</h3>
+                    <p>Avec une formation pharmaceutique, nous comprenons réellement les défis des officines modernes.</p>
+                    
+                    <h3>Innovation & Créativité</h3>
+                    <p>Des solutions créatives et modernes qui valorisent vos produits et améliorent l'expérience client.</p>
+                </div>
+                <div class="image-side reveal slide-in-right">
+                    <div class="img-container">
+                        <img src="nv2.avif" alt="Nos valeurs">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-dark">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h3><span class="logo-icon">⬢</span> BO</h3>
+                <p>agencement + merchandising</p>
+            </div>
+            <div class="footer-contact">
+                <p>📍 15, avenue Albert Camus<br>77400 LAGNY-SUR-MARNE</p>
+                <p>📞 Tél : 06.80.33.76.90</p>
+                <p>✉️ bo.mobilier@gmail.com</p>
+            </div>
+            <div class="footer-social">
+                <a href="contact.html" class="btn-primary" style="font-size: 0.9rem; padding: 10px 20px;">Nous contacter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BO Mobilier Merch. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll progress bar
+        const scrollProgress = () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (scrollTop / docHeight) * 100;
+            const progressBar = document.getElementById('scroll-progress');
+            if (progressBar) progressBar.style.width = scrolled + '%';
+        };
+
+        window.addEventListener('scroll', scrollProgress);
+
+        // Scroll reveal animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Animate on page load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.fade-in-down, .fade-in-up').forEach((el, index) => {
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
